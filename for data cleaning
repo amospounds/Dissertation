@@ -1,0 +1,41 @@
+Algorithm: Email Data Cleaning and Feature Extraction
+
+Input: A CSV file containing email data
+Output: A CSV file with extracted and processed email features
+
+Step 1: Import Necessary Libraries
+    - Import pandas as pd
+    - Import numpy as np
+    - Import regular expression module as re
+    - Import urlparse and parse_qs from urllib.parse
+    - Import datetime from datetime module
+
+Step 2: Define Helper Functions
+    Function: count_occurrences(char, text)
+        - Return the count of char in text
+    
+    Function: extract_domain_features(url)
+        - Parse url to get hostname, path, and query
+        - Split hostname to get subdomains
+        - Define and return a dictionary with features like:
+            Number of dots, subdomain level, path level, URL length, and other relevant URL features
+
+    Function: parse_email_date(date_str)
+        - Return datetime object parsed from date_str in a specific format
+
+Step 3: Feature Extraction for Each Email
+    Function: process_email(row)
+        - Extract URL features using extract_domain_features for 'url' in row
+        - Parse email date using parse_email_date for 'received_date' in row
+        - Return a dictionary merging URL features and email date
+
+Step 4: Load and Process Data
+    - Load email data from 'path_to_emails.csv' using pandas
+    - Apply process_email function to each row in the dataset
+    - Expand the result to fit dataframe structure
+
+Step 5: Finalize Dataset
+    - Concatenate original emails dataframe with processed_emails dataframe
+    - Save the combined dataframe to 'processed_email_dataset.csv'
+
+End Algorithm
